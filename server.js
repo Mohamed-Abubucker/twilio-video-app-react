@@ -10,6 +10,17 @@ const twilioAccountSid = process.env.TWILIO_ACCOUNT_SID ? process.env.TWILIO_ACC
 const twilioApiKeySID = process.env.TWILIO_API_KEY_SID ? process.env.TWILIO_API_KEY_SID.trim() : "";
 const twilioApiKeySecret = process.env.TWILIO_API_KEY_SECRET ? process.env.TWILIO_API_KEY_SECRET.trim() : "";
 
+console.log(
+  {
+    twilioAccountSid,
+    twilioApiKeySID,
+    twilioApiKeySecret
+  },
+  'credentials'
+);
+
+
+
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('/token', (req, res) => {
