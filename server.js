@@ -1,4 +1,3 @@
-const serverless = require('serverless-http');
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
@@ -15,4 +14,4 @@ app.use('/api', apis);
 
 app.get('*', (_, res) => res.sendFile(path.join(__dirname, 'build/index.html')));
 
-module.exports.handler = serverless(app);
+module.exports = app;

@@ -1,12 +1,19 @@
 # serverless.yml
 
-service: my-express-application
+service: twilio-video-app-react
 
 provider:
   name: aws
-  runtime: nodejs@latest
+  runtime: nodejs12.x
   stage: dev
   region: us-east-1
+  environment:
+    SLS_DEBUG: true
+    TWILIO_ACCOUNT_SID: AC00000000000000000000000000000000
+    TWILIO_API_KEY_SID: SK00000000000000000000000000000000
+    TWILIO_API_KEY_SECRET: 00000000000000000000000000000000
+    NODE_ENV: DEV
+    SERVER_ENV: SLS
 
 functions:
   app:
