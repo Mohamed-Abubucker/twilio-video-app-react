@@ -203,7 +203,7 @@ describe('the verifyPasscode function', () => {
 
   it('should call the API with the correct parameters', async () => {
     await verifyPasscode('123456');
-    expect(window.fetch).toHaveBeenLastCalledWith('/token', {
+    expect(window.fetch).toHaveBeenLastCalledWith('/api/token', {
       body: '{"user_identity":"temp-name","room_name":"temp-room","passcode":"123456"}',
       headers: { 'content-type': 'application/json' },
       method: 'POST',

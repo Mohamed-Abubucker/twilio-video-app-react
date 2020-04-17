@@ -21,7 +21,7 @@ export default function useFirebaseAuth() {
       const idToken = await user!.getIdToken();
       headers.set('Authorization', idToken);
 
-      const endpoint = process.env.REACT_APP_TOKEN_ENDPOINT || '/token';
+      const endpoint = process.env.REACT_APP_TOKEN_ENDPOINT || '/api/token';
       const params = new window.URLSearchParams({ identity, roomName });
 
       return fetch(`${endpoint}?${params}`, { headers }).then(res => res.text());

@@ -51,10 +51,11 @@ export default function AppStateProvider(props: React.PropsWithChildren<{}>) {
       ...contextValue,
       getToken: async (identity, roomName) => {
         const headers = new window.Headers();
-        const endpoint = process.env.REACT_APP_TOKEN_ENDPOINT || '/token';
+        const endpoint = process.env.REACT_APP_TOKEN_ENDPOINT || '/api/token';
         const params = new window.URLSearchParams({ identity, roomName });
-
-        return fetch(`${endpoint}?${params}`, { headers }).then(res => res.text());
+        const data = await fetch(`${endpoint}?${params}`, { headers }).then(res => res.text());
+        console.log({ data }, 'getToken');
+        return data;
       },
     };
   }
@@ -65,6 +66,7 @@ export default function AppStateProvider(props: React.PropsWithChildren<{}>) {
       .getToken(name, room)
       .then(res => {
         setIsFetching(false);
+        console.log({ res }, 'getToken');
         return res;
       })
       .catch(err => {
